@@ -6,6 +6,7 @@ module.exports = {
         res.status(200).json({message: 'Successfully logged out hehe bye bye'});
     },
     handleCallback: (req, res) => {
+        console.log('wetgdsfwer5ystdrz')
         exchangeCodeForAccessToken()
             .then(exchangeAccessCodeForUserInfo)
             .then(storeUserInfoInDatabase)
@@ -15,20 +16,24 @@ module.exports = {
             })
 
         function exchangeCodeForAccessToken(){
+            console.log('exchangeCodeForAccessToken')
             const payload = {
                 client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
                 client_secret: process.env.AUTH0_CLIENT_SECRET,
                 code: req.query.code,
-                authorization: 'authorization_code',
-                redirect_uri: `http://${req.headers.host}/auth/callback`
+                grant_type: 'authorization_code',
+                redirect_uri: `http://${req.headers.host}/auth/callback`,
+
             };
             console.log('payload', payload);
             return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload);
         }
 
         function exchangeAccessCodeForUserInfo(accessTokenRes){
+            console.log('exchangeAccessCodeForUserInfo')
+            const accessToken = accessTokenRes.data.access_token;
             console.log('accessToken', accessTokenRes.data.access_token);
-            const url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo?access_token=${accessTokenRes.data.access_token}`;
+            const url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo?access_token=${accessToken}`;
             console.log('user info url', url);
             return axios.post(url);
         }

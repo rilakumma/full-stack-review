@@ -31,7 +31,7 @@ app.get('/auth/callback', authController.handleCallback);
 
 // couch controller
 app.get('/api/couches', couchController.getCouches)
-app.post('api/couches', couchController.addCouch);
+app.post('/api/couches', couchController.addCouch);
 
 
 const port = 4000;
