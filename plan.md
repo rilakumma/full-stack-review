@@ -30,12 +30,12 @@
 * /auth/callback
 
 ## controllers
-* couches controller
-* auth controller
-* user controller
+* couches controller X
+* auth controller X
+* user controller X
 
 ## Server
-* index.js
+* index.js X
 
 ## Routing
 * / (home)

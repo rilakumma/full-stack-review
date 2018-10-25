@@ -1,2 +1,2 @@
 select * from users
-where id = ${id};
+where auth0_id = ${auth0_id};
