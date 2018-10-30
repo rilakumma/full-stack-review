@@ -22,7 +22,7 @@ export default class Couches extends Component {
             return <div>
                 <h1>{couch.name}</h1>
                 <img src = {couch.image} />
-                <p>{couch.price} </p>
+                <p>Price: ${couch.price}</p>
             </div>
         })
         return(
